@@ -101,31 +101,32 @@ jobs:
           chmod +x ~/bin/repo
           sudo ln -sf ~/bin/repo /usr/local/bin/repo
 
+      - name: Create workspace folder
+        run: mkdir workspace
+
       - name: Init repo
-        id: pwd
         run: |
-          mkdir workspace
           cd workspace
-          echo "workspace-folder=$(pwd)" >> $GITHUB_OUTPUT
           git config --global user.name "AndroidHQ254"
           git config --global user.email "14816738+AndroidHQ254@users.noreply.github.com"
           repo init --depth=1 -u "${{ github.event.inputs.MANIFEST_URL }}" -b "${{ github.event.inputs.MANIFEST_BRANCH }}"
+        working-directory: ${{ github.workspace }}
 
       - name: Repo Sync
         run: |
-          cd ${{ steps.pwd.outputs.workspace-folder }}
           repo sync --force-sync --no-clone-bundle --optimized-fetch -j4
+        working-directory: ${{ github.workspace }}/workspace
 
       - name: Clone device tree
         run: |
           git clone "${{ github.event.inputs.DEVICE_TREE_URL }}" -b "${{ github.event.inputs.DEVICE_TREE_BRANCH }}" "${{ github.event.inputs.DEVICE_PATH }}"
-        working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+        working-directory: ${{ github.workspace }}/workspace
 
       - name: Clone common tree
         if: ${{ github.event.inputs.COMMON_TREE_URL != '' && github.event.inputs.COMMON_PATH != '' }}
         run: |
           git clone "${{ github.event.inputs.COMMON_TREE_URL }}" -b "${{ github.event.inputs.DEVICE_TREE_BRANCH }}" "${{ github.event.inputs.COMMON_PATH }}"
-        working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+        working-directory: ${{ github.workspace }}/workspace
 
       - name: Check build tree
         uses: haya14busa/action-cond@v1
@@ -137,9 +138,9 @@ jobs:
 
       - name: Sync dependencies
         run: |
-          cd ${{ steps.pwd.outputs.workspace-folder }}
           bash "${GITHUB_WORKSPACE}/scripts/convert.sh" "${{ github.event.inputs.DEVICE_PATH }}/${{ steps.buildtree.outputs.value }}.dependencies"
-          repo sync -j$(nproc)
+          repo sync -j4
+        working-directory: ${{ github.workspace }}/workspace
         continue-on-error: true
 
       - name: Set swap space
@@ -149,12 +150,12 @@ jobs:
 
       - name: Build recovery
         run: |
-          cd ${{ steps.pwd.outputs.workspace-folder }}
           source build/envsetup.sh
           export ALLOW_MISSING_DEPENDENCIES=true
           lunch "${{ github.event.inputs.MAKEFILE_NAME }}-eng"
           make clean
           make "${{ github.event.inputs.BUILD_TARGET }}image" -j$(nproc)
+        working-directory: ${{ github.workspace }}/workspace
 
       - name: Upload to release
         uses: softprops/action-gh-release@v1
