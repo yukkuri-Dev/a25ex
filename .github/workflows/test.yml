@@ -10,7 +10,7 @@ on:
       MANIFEST_BRANCH:
         description: 'TWRP Manifest Branch'
         required: true
-        default: 'twrp-14.1'
+        default: 'twrp-12.1'
       DEVICE_TREE:
         description: 'TWRP Device Tree'
         required: true
@@ -30,7 +30,7 @@ on:
       MAKEFILE_NAME:
         description: 'Specify your Device Makefile Name'
         required: true
-        default: 'twrp_a25ex.mk'
+        default: 'twrp_a25ex'
         type: choice
         options:
         - twrp_a25ex
@@ -69,20 +69,14 @@ jobs:
         cd scripts
         sudo bash setup/android_build_env.sh
 
-        - name: Set-up Manifest
-        run: |
-        rm -rf "${GITHUB_WORKSPACE}/twrp"
-        mkdir -p "${GITHUB_WORKSPACE}/twrp"
-        cd "${GITHUB_WORKSPACE}/twrp"
-
+    - name: Set-up Manifest
+      run: |
+        mkdir -p ${GITHUB_WORKSPACE}/twrp
+        cd ${GITHUB_WORKSPACE}/twrp
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-
-        repo init --depth=1 -u "${{ inputs.MANIFEST_URL }}" -b "${{ inputs.MANIFEST_BRANCH }}"
-        rm -rf platform/prebuilts/rust
-
-        repo sync -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
-
+        repo init --depth=1 -u ${{ inputs.MANIFEST_URL }} -b ${{ inputs.MANIFEST_BRANCH }}
+        repo sync -j$(nproc --all) --force-sync
 
     - name: Clone Device Tree
       run: |
@@ -91,15 +85,16 @@ jobs:
         cd ${{ inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+
     - name: Building TWRP
       run: |
-       cd ${GITHUB_WORKSPACE}/twrp
-       set +e
-       source build/envsetup.sh
-       export ALLOW_MISSING_DEPENDENCIES=true
-       set -e
-       lunch ${{ inputs.MAKEFILE_NAME }}-eng && make clean && mka recoveryimage -j$(nproc --all)
-       
+        cd ${GITHUB_WORKSPACE}/twrp
+        set +e
+        source build/envsetup.sh
+        export ALLOW_MISSING_DEPENDENCIES=true
+        set -e
+        lunch ${{ inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
+
     - name: Set Release Properties
       run: |
         echo "BUILD_DATE=$(TZ=Asia/Manila date +%Y%m%d)" >> $GITHUB_ENV
