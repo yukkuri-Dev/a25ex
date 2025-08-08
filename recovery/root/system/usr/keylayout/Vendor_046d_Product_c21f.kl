@@ -1,4 +1,4 @@
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright (C) 2013 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Key layout used for Bluetooth AVRCP support.
+# Logitech Wireless Gamepad F710
 
-key 200   MEDIA_PLAY
-key 201   MEDIA_PAUSE
-key 166   MEDIA_STOP
-key 163   MEDIA_NEXT
-key 165   MEDIA_PREVIOUS
-key 168   MEDIA_REWIND
-key 208   MEDIA_FAST_FORWARD
+key 304 BUTTON_A
+key 305 BUTTON_B
+key 307 BUTTON_X
+key 308 BUTTON_Y
+key 310 BUTTON_L1
+key 311 BUTTON_R1
+key 315 BUTTON_START
+key 314 BACK
+key 316 HOME
+key 317 BUTTON_THUMBL
+key 318 BUTTON_THUMBR
+
+axis 0x00 X
+axis 0x01 Y
+axis 0x03 Z
+axis 0x04 RZ
+axis 0x05 RTRIGGER
+axis 0x02 LTRIGGER
+axis 0x10 HAT_X
+axis 0x11 HAT_Y

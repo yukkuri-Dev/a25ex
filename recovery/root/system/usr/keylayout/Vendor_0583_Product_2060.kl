@@ -1,4 +1,4 @@
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright (C) 2013 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Key layout used for Bluetooth AVRCP support.
+# ION GO PAD
 
-key 200   MEDIA_PLAY
-key 201   MEDIA_PAUSE
-key 166   MEDIA_STOP
-key 163   MEDIA_NEXT
-key 165   MEDIA_PREVIOUS
-key 168   MEDIA_REWIND
-key 208   MEDIA_FAST_FORWARD
+key 288 BUTTON_A
+key 289 BUTTON_B
+key 290 BUTTON_X
+key 291 BUTTON_Y
+key 294 BUTTON_L1
+key 295 BUTTON_R1
+key 292 BUTTON_L2
+key 293 BUTTON_R2
+
+axis 0x00 HAT_X
+axis 0x01 HAT_Y
