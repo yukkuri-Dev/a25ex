@@ -13,8 +13,11 @@
 # limitations under the License.
 
 #
-# Key character map for a built-in generic virtual keyboard primarily used
-# for instrumentation and testing purposes.
+# Generic key character map for full alphabetic US English PC style external keyboards.
+#
+# This file is intentionally very generic and is intended to support a broad rang of keyboards.
+# Do not edit the generic key character map to support a specific keyboard; instead, create
+# a new key character map file with the required keyboard configuration.
 #
 
 type FULL
@@ -86,7 +89,7 @@ key I {
     base:                               'i'
     shift, capslock:                    'I'
     shift+capslock:                     'i'
-    alt:                                 '\u0302'
+    alt:                                '\u0302'
 }
 
 key J {
@@ -497,7 +500,7 @@ key PLUS {
 
 key ESCAPE {
     base:                               none
-    alt, meta:                          fallback HOME
+    alt:                                fallback HOME
     ctrl:                               fallback MENU
 }
 
@@ -520,11 +523,11 @@ key BUTTON_C {
 }
 
 key BUTTON_X {
-    base:                               fallback DPAD_CENTER
+    base:                               fallback DEL
 }
 
 key BUTTON_Y {
-    base:                               fallback BACK
+    base:                               fallback SPACE
 }
 
 key BUTTON_Z {
