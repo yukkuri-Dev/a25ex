@@ -44,9 +44,6 @@ TARGET_CPU_SMP := true
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
-
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := a25ex
 TARGET_NO_BOOTLOADER := true
@@ -137,14 +134,11 @@ TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_FRAMERATE := 60
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
-# APEX
-DEXPREOPT_GENERATE_APEX_IMAGE := true
+
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
-
-# TW_SCREEN_BLANK_ON_BOOT := true
 TW_NO_SCREEN_TIMEOUT := true
 TW_NO_SCREEN_BLANK := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -155,6 +149,7 @@ TW_OVERRIDE_SYSTEM_PROPS := true
 TW_INCLUDE_LPTOOLS := true
 TW_USE_NEW_MINADBD := true
 TARGET_USES_MKE2FS := true
+TW_EXCLUDE_APEX := true
 TW_NO_LEGACY_PROPS := true
 TW_NO_BIND_SYSTEM := true
 TW_INCLUDE_FASTBOOTD := true
