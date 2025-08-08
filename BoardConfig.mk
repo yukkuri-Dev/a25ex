@@ -17,6 +17,9 @@ ENABLE_SCHEDBOOST := true
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
+# VINTF
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml
+
 # These two are for MTK Chipsets only
 BOARD_USES_MTK_HARDWARE := true
 BOARD_HAS_MTK_HARDWARE := true
