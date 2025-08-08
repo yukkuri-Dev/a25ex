@@ -93,7 +93,7 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         set -e
-        lunch ${{ inputs.MAKEFILE_NAME }} && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
+        lunch ${{ inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
 
     - name: Set Release Properties
       run: |
