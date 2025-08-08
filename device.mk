@@ -6,8 +6,6 @@
 #
 
 LOCAL_PATH := device/samsung/a25ex
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
-PRODUCT_SHIPPING_API_LEVEL := 32
 PRODUCT_CHARACTERISTICS := phone
 
 # fastbootd
@@ -21,6 +19,12 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     android.hardware.health@2.1-service
 
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
+    
+# Dynamic partitions
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
