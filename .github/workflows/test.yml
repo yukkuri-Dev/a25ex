@@ -30,10 +30,10 @@ on:
       MAKEFILE_NAME:
         description: 'Specify your Device Makefile Name'
         required: true
-        default: 'twrp_a25ex-ap2a'
+        default: 'twrp_a25ex'
         type: choice
         options:
-        - twrp_a25ex-ap2a
+        - twrp_a25ex
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
