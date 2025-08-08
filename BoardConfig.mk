@@ -133,18 +133,20 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko touch_boost.ko"
-TW_EXCLUDE_APEX := true
 TW_BACKUP_EXCLUSIONS := /data/fonts
-TW_Y_OFFSET := 80
-TW_H_OFFSET := -80
 TW_FRAMERATE := 60
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
+# APEX
+DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
-TW_EXTRA_LANGUAGES := false
-TW_SCREEN_BLANK_ON_BOOT := true
+TW_EXTRA_LANGUAGES := true
+
+# TW_SCREEN_BLANK_ON_BOOT := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_NO_SCREEN_BLANK := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
 TW_DEFAULT_LANGUAGE := en
