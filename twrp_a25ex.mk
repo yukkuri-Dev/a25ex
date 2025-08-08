@@ -16,7 +16,7 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 $(call inherit-product, device/samsung/a25ex/device.mk)
 
 PRODUCT_DEVICE := a25ex
-PRODUCT_NAME := twrp_a25ex
+PRODUCT_NAME := twrp_a25ex-eng
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-A253Q
 PRODUCT_MANUFACTURER := samsung
