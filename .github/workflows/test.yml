@@ -10,7 +10,7 @@ on:
       MANIFEST_BRANCH:
         description: 'TWRP Manifest Branch'
         required: true
-        default: 'twrp-14'
+        default: 'twrp-12.1'
       DEVICE_TREE:
         description: 'TWRP Device Tree'
         required: true
@@ -33,14 +33,14 @@ on:
         default: 'twrp_a25ex-ap2a'
         type: choice
         options:
-          - twrp_a25ex-ap2a
+        - twrp_a25ex-ap2a
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
         default: 'recovery'
         type: choice
         options:
-          - recovery
+        - recovery
 
 jobs:
   build:
@@ -85,23 +85,24 @@ jobs:
         cd ${{ inputs.DEVICE_PATH }}
         echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
+
     - name: Building TWRP
       run: |
         cd ${GITHUB_WORKSPACE}/twrp
+        set +e
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
-        lunch ${{ inputs.MAKEFILE_NAME }}
-        make clean
-        mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
+        set -e
+        lunch ${{ inputs.MAKEFILE_NAME }}-eng && make clean && mka adbd ${{ inputs.BUILD_TARGET }}image -j$(nproc --all)
 
     - name: Set Release Properties
       run: |
         echo "BUILD_DATE=$(TZ=Asia/Manila date +%Y%m%d)" >> $GITHUB_ENV
         cd ${GITHUB_WORKSPACE}/twrp
 
-        if [ "${{ inputs.BUILD_TARGET }}" = 'recovery' ]; then
+        if [ ${{ inputs.BUILD_TARGET }} == 'recovery' ]; then
            echo "BUILD_TARGET_NAME=recovery" >> $GITHUB_ENV
-        elif [ "${{ inputs.BUILD_TARGET }}" = 'boot' ]; then
+        elif [ ${{ inputs.BUILD_TARGET }} == 'boot' ]; then
            echo "BUILD_TARGET_NAME=boot" >> $GITHUB_ENV
         else
            echo "BUILD_TARGET_NAME=vendor_boot" >> $GITHUB_ENV
