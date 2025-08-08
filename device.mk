@@ -8,6 +8,9 @@
 LOCAL_PATH := device/samsung/a25ex
 PRODUCT_CHARACTERISTICS := phone
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
+
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
