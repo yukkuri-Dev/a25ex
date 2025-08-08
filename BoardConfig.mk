@@ -139,6 +139,8 @@ TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
 TW_FRAMERATE := 60
+BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
