@@ -9,5 +9,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_a25ex.mk
 
 COMMON_LUNCH_CHOICES := \
-    twrp_a25ex-eng \
-    twrp_a25ex-userdebug
+    twrp_a25ex-eng
