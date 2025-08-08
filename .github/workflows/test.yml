@@ -71,14 +71,12 @@ jobs:
 
     - name: Set-up Manifest
       run: |
-       mkdir -p ${GITHUB_WORKSPACE}/twrp
-       cd ${GITHUB_WORKSPACE}/twrp
-       git config --global user.name "${{ github.actor }}"
-       git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-       repo init --depth=1 -u ${{ inputs.MANIFEST_URL }} -b ${{ inputs.MANIFEST_BRANCH }}
-       mkdir -p .repo/local_manifests
-       echo '<manifest><remove-project name="platform/prebuilts/rust" /></manifest>' > .repo/local_manifests/local_manifest.xml
-       repo sync -j$(nproc --all) --force-sync
+        mkdir -p ${GITHUB_WORKSPACE}/twrp
+        cd ${GITHUB_WORKSPACE}/twrp
+        git config --global user.name "${{ github.actor }}"
+        git config --global user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+        repo init --depth=1 -u ${{ inputs.MANIFEST_URL }} -b ${{ inputs.MANIFEST_BRANCH }}
+        repo sync -j$(nproc --all) --force-sync
 
     - name: Clone Device Tree
       run: |
