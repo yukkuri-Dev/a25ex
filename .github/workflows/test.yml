@@ -30,10 +30,10 @@ on:
       MAKEFILE_NAME:
         description: 'Specify your Device Makefile Name'
         required: true
-        default: 'twrp_a25ex'
+        default: 'omni_a25ex.mk'
         type: choice
         options:
-        - twrp_a25ex
+        - omni_a25ex
       BUILD_TARGET:
         description: 'Specify your Build Target'
         required: true
