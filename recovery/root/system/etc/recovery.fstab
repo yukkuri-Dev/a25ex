@@ -26,12 +26,12 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #<src>                                    <mnt_point>    <type>    <mnt_flags and options>    <fs_mgr_flags>
-system	/system	erofs	ro	avb=vbmeta,logical,first_stage_mount
-system	/system	f2fs	ro	avb=vbmeta,logical,first_stage_mount
-system	/system	ext4	ro	avb=vbmeta,logical,first_stage_mount
-vendor	/vendor	erofs	ro	avb,logical,first_stage_mount
-product	/product	erofs	ro	avb,logical,first_stage_mount
-odm	/odm	erofs	ro	avb,logical,first_stage_mount
+system	/system	erofs	rw	avb=vbmeta,logical,first_stage_mount
+system	/system	f2fs	rw	avb=vbmeta,logical,first_stage_mount
+system	/system	ext4	rw	avb=vbmeta,logical,first_stage_mount
+vendor	/vendor	erofs	rw	avb,logical,first_stage_mount
+product	/product	erofs	rw	avb,logical,first_stage_mount
+odm	/odm	erofs	rw	avb,logical,first_stage_mount
 
 /dev/block/by-name/boot        /boot           emmc        defaults                  recoveryonly
 /dev/block/by-name/recovery    /recovery       emmc        defaults                  recoveryonly
