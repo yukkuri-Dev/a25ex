@@ -5,8 +5,8 @@
 #############################################
 
 # Load kernel modules here, add your KO behind
-modprobe|focaltech_ts_ft3418.ko
-modprobe|zt7650m_ts.ko
+modprobe|touch_boost.ko
+modprobe|nt36xxx_spi.ko
 
 # All modules loaded
 setprop|vendor.all.modules.ready
