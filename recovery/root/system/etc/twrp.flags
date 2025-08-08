@@ -10,10 +10,9 @@
 /cache              ext4      /dev/block/by-name/cache              flags=display=cache
 /efs                ext4      /dev/block/by-name/sec_efs            flags=display=efs
 /carrier            ext4      /dev/block/by-name/carrier            flags=display=carrier
-/preload            ext4      /dev/block/by-name/hidden             flags=display=preload
+# /preload            ext4      /dev/block/by-name/hidden             flags=display=preload
 /misc               emmc      /dev/block/by-name/misc               flags=display=misc
 /metadata           ext4      /dev/block/by-name/metadata           flags=display=metadata
-/sdcard             sdfat     /dev/block/mmcblk1p1                  flags=display=sdcard
 /modem              emmc      /dev/block/by-name/apnhlos            flags=display=modem
 /mdm                emmc      /dev/block/by-name/modem              flags=display=mdm
 /dsp                emmc      /dev/block/by-name/dsp                flags=display=dsp
@@ -37,3 +36,9 @@
 /init_boot          emmc      /dev/block/by-name/init_boot          flags=display=init_boot
 /VCP                emmc      /dev/block/by-name/vcp                flags=display=VCP
 /vendor_boot        emmc      /dev/block/by-name/vendor_boot        flags=display=vendor_boot
+/system_image  emmc  /dev/block/mapper/system  flags=backup=0;flashimg=1;display="System Image"
+/vendor_image  emmc  /dev/block/mapper/vendor  flags=backup=0;flashimg=1;display="Vendor Image"
+/product_image  emmc  /dev/block/mapper/product  flags=backup=0\;flashimg=1\;display=\"Product Image\"";
+/odm_image  emmc  /dev/block/mapper/odm  flags=backup=0;flashimg=1;display="Odm Image"
+/external_sd auto  /dev/block/mmcblk1p1 /dev/block/mmcblk1 flags=storage;wipeingui;removable
+/usb-otg auto  /dev/block/sda1 /dev/block/sda   flags=display="USB-OTG";storage;wipeingui;removable
