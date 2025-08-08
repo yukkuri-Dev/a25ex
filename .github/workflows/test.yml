@@ -111,10 +111,11 @@ jobs:
           git config --global user.email "14816738+AndroidHQ254@users.noreply.github.com"
           repo init --depth=1 -u "${{ github.event.inputs.MANIFEST_URL }}" -b "${{ github.event.inputs.MANIFEST_BRANCH }}"
 
-      - name: Sync repo
-        run: repo sync -j$(nproc) --force-sync
-        working-directory: ${{ steps.pwd.outputs.workspace-folder }}
-
+      - name: Repo Sync
+        run: |
+          repo sync -j$(nproc --all) --force-sync
+          working-directory: workspace
+          
       - name: Clone device tree
         run: |
           git clone "${{ github.event.inputs.DEVICE_TREE_URL }}" -b "${{ github.event.inputs.DEVICE_TREE_BRANCH }}" "${{ github.event.inputs.DEVICE_PATH }}"
