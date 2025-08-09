@@ -4,8 +4,7 @@
 # at init time by init.insmod.sh script     #
 #############################################
 
-# Load kernel modules here, add your KO behind
-modprobe|touch_boost.ko
+# Load kernel modules here, add your KO behin
 modprobe|nt36xxx_spi.ko
 
 # All modules loaded
