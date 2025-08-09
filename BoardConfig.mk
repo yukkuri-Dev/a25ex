@@ -136,11 +136,14 @@ BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig m
 BOARD_SUPPRESS_SECURE_ERASE := true
 #TW_SCREEN_BLANK_ON_BOOT := true
 
+
+
 # TWRP Configuration
 TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
+TW_NO_SCREEN_TIMEOUT := true
 TW_DEFAULT_LANGUAGE := en
 TW_INCLUDE_REPACKTOOLS := true
 TW_OVERRIDE_SYSTEM_PROPS := true
