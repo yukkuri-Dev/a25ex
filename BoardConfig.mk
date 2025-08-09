@@ -137,6 +137,37 @@ TW_H_OFFSET := -80
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
 
+##
+# USB host / OTG
+CONFIG_USB=y
+CONFIG_USB_SUPPORT=y
+CONFIG_USB_COMMON=y
+
+# USB core + EHCI/XHCI (チップセットに合わせて)
+CONFIG_USB_XHCI_HCD=y    # xHCI host controller
+CONFIG_USB_EHCI_HCD=y    # EHCI (必要に応じて)
+
+# USB HID (マウス/キーボード)
+CONFIG_USB_HID=y
+CONFIG_HID=y
+CONFIG_HID_GENERIC=y
+CONFIG_USB_HIDDEV=m       # or =y
+
+# HID input layer (input subsystem)
+CONFIG_INPUT=y
+CONFIG_INPUT_MOUSE=y
+CONFIG_INPUT_KEYBOARD=y
+
+# I2C / SPI (タッチパネルが I2C 経由なら)
+CONFIG_I2C=y
+CONFIG_I2C_BOARDINFO=y
+CONFIG_I2C_CHARDEV=y
+
+# 代表的タッチドライバ（デバイスに合わせる）
+CONFIG_TOUCHSCREEN_GOODIX=y     # Goodix 例
+CONFIG_TOUCHSCREEN_FT5X06=y     # FocalTech 例
+CONFIG_TOUCHSCREEN_SYNAPTICS=y  # Synaptics 例
+##
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
