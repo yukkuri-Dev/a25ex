@@ -129,7 +129,7 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
-TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko leds-aw36518.ko"
+TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko"
 TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_FRAMERATE := 60
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
