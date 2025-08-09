@@ -1,3 +1,8 @@
 ro.boot.dynamic_partitions=true
-sys.usb.config=mtp
 qemu.hw.mainkeys=0
+ro.boot.vbmeta.size=2432
+ro.boot.vbmeta.digest=30ef2f8bf8df513a63cbac100c59ae68887e694e44a23f4aeb8e29f16775732f
+ro.boot.vbmeta.hash_alg=sha256
+ro.boot.vbmeta.avb_version=1.2
+ro.boot.vbmeta.device_state=unlocked
+ro.boot.boot_devices=bootdevice,soc/112b0000.ufshci,112b0000.ufshci
