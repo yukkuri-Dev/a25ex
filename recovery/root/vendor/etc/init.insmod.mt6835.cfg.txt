@@ -5,6 +5,7 @@
 #############################################
 
 # Load kernel modules here, add your KO behin
+modprobe|leds-aw36518.ko
 modprobe|nt36xxx_spi.ko
 
 # All modules loaded
