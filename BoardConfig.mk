@@ -9,6 +9,7 @@ DEVICE_PATH := device/samsung/a25ex
 BOARD_VENDOR := samsung
 BOARD_DEVICE := a25ex
 AB_OTA_UPDATER := false
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_OTA_ASSERT_DEVICE := SM-A253Q
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -136,7 +137,6 @@ TW_Y_OFFSET := 80
 TW_H_OFFSET := -80
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
-
 
 # TWRP Configuration
 TW_THEME := portrait_hdpi
