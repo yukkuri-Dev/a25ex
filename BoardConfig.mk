@@ -17,7 +17,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
 
 # VINTF
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml
+DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest_mt6835.xml
 
 # These two are for MTK Chipsets only
 BOARD_USES_MTK_HARDWARE := true
