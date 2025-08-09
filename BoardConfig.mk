@@ -9,7 +9,6 @@ DEVICE_PATH := device/samsung/a25ex
 BOARD_VENDOR := samsung
 BOARD_DEVICE := a25ex
 AB_OTA_UPDATER := false
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_OTA_ASSERT_DEVICE := SM-A253Q
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
