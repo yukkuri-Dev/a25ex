@@ -14,6 +14,9 @@ TARGET_OTA_ASSERT_DEVICE := SM-A253Q
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+
+
 
 # VINTF
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest_mt6835.xml
@@ -132,6 +135,8 @@ PLATFORM_VERSION := 16.1.0
 TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko leds-aw36518.ko fhctl.ko"
 TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_FRAMERATE := 60
+TW_Y_OFFSET := 80
+TW_H_OFFSET := -80
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
 #TW_SCREEN_BLANK_ON_BOOT := true
