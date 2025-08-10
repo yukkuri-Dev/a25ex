@@ -125,7 +125,7 @@ PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 TWRP_EVENT_LOGGING := true
-TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko"
+TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko usdm-panel-tft-common.ko sec_panel_notifier_v2.ko sec_input_notifier.ko mtk-mcd-panel-adapter.ko mcd-panel.ko mcd-panel-nt36528a_a25ex_00.ko"
 TW_BACKUP_EXCLUSIONS := /data/fonts
 TW_FRAMERATE := 60
 
