@@ -8,3 +8,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 ```
+タッチ不可
+/data複合不可
+没
+adbとマウスしか使えません
