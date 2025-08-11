@@ -9,12 +9,13 @@ DEVICE_PATH := device/samsung/a25ex
 BOARD_VENDOR := samsung
 BOARD_DEVICE := a25ex
 AB_OTA_UPDATER := false
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-TARGET_OTA_ASSERT_DEVICE := SM-A253Q
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 DISABLE_ARTIFACT_PATH_REQUIREMENTS := true
+# APEX
+#DEXPREOPT_GENERATE_APEX_IMAGE := true
+TW_EXCLUDE_APEX := true
 
 # VINTF
 DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest_mt6835.xml
@@ -58,7 +59,9 @@ TARGET_SCREEN_DENSITY := 300
 # Kernel
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x3fff8000
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 loop.max_part=7
+BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2
+BOARD_KERNEL_CMDLINE += loop.max_part=7
+BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_RAMDISK_OFFSET := 0x26f08000
 BOARD_KERNEL_TAGS_OFFSET := 0x07c88000
@@ -107,6 +110,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel/brightness"
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Security patch level
 VENDOR_SECURITY_PATCH := 2021-08-01
@@ -118,21 +122,21 @@ BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
-BOARD_VNDK_VERSION := current
+
+# Hack: prevent anti rollback
+PLATFORM_SECURITY_PATCH := 2099-12-31
+VENDOR_SECURITY_PATCH := 2099-12-31
+PLATFORM_VERSION := 16.1.0
+TWRP_EVENT_LOGGING := true
+TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko usdm-panel-tft-common.ko sec_panel_notifier_v2.ko sec_input_notifier.ko mtk-mcd-panel-adapter.ko mcd-panel.ko mcd-panel-nt36528a_a25ex_00.ko"
+TW_BACKUP_EXCLUSIONS := /data/fonts
+TW_FRAMERATE := 60
 
 TW_INCLUDE_CRYPTO := false
 TW_INCLUDE_CRYPTO_FBE := false
 TW_INCLUDE_FBE_METADATA_DECRYPT := false
 BOARD_USES_METADATA_PARTITION := true
 
-# Hack: prevent anti rollback
-PLATFORM_SECURITY_PATCH := 2099-12-31
-VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION := 16.1.0
-
-TW_LOAD_VENDOR_MODULES := "nt36xxx_spi.ko leds-aw36518.ko"
-TW_BACKUP_EXCLUSIONS := /data/fonts
-TW_FRAMERATE := 60
 BOARD_ROOT_EXTRA_FOLDERS := carrier data_mirror debug_ramdisk efs linkerconfig metadata odm_dlkm oem optics postinstall prism second_stage_resources spu system_ext vendor_dlkm system_dlkm
 BOARD_SUPPRESS_SECURE_ERASE := true
 #TW_SCREEN_BLANK_ON_BOOT := true
@@ -142,16 +146,19 @@ TW_THEME := portrait_hdpi
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_USE_TOOLBOX := true
+TW_NO_SCREEN_TIMEOUT := true
 TW_DEFAULT_LANGUAGE := en
 TW_INCLUDE_REPACKTOOLS := true
-TW_OVERRIDE_SYSTEM_PROPS := true
 TW_INCLUDE_LPTOOLS := true
 TARGET_USES_MKE2FS := true
 TW_USE_NEW_MINADBD := true
-TW_EXCLUDE_APEX := true
 TW_INCLUDE_FASTBOOTD := true
 TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_LIBRESETPROP := true
+TWRP_INCLUDE_LOGCAT := true
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_DEVICE_VERSION := $(shell date -u +" %F")
 TW_NO_CPU_TEMP := true
+TW_NO_LEGACY_PROPS := true
+TW_NO_BIND_SYSTEM := true

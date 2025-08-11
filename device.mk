@@ -7,7 +7,7 @@
 
 LOCAL_PATH := device/samsung/a25ex
 PRODUCT_CHARACTERISTICS := phone
-PRODUCT_ENFORCE_RRO_TARGETS := *
+
 # fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
-    
+
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 

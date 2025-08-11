@@ -10,6 +10,11 @@
 /cache              ext4      /dev/block/by-name/cache              flags=display=cache
 /efs                ext4      /dev/block/by-name/sec_efs            flags=display=efs
 /carrier            ext4      /dev/block/by-name/carrier            flags=display=carrier
+auto                vfat     /devices/platform/soc/11230000.mmc*                 flags=display=auto
+auto                vfat     /devices/platform/soc/11240000.mmc*                 flags=display=auto
+auto                vfat     /devices/platform/mt_usb*                           flags=display=auto
+auto                vfat     /devices/platform/soc/11190000.usb*                 flags=display=auto
+auto                vfat     /devices/platform/soc/mt_usb*                       flags=display=auto
 # /preload            ext4      /dev/block/by-name/hidden             flags=display=preload
 /misc               emmc      /dev/block/by-name/misc               flags=display=misc
 /metadata           ext4      /dev/block/by-name/metadata           flags=display=metadata
