@@ -21,7 +21,7 @@ on early-init
     setprop sys.usb.configfs 0
 
 on init
-    export PATH /sbin:/system/bin/vendor/bin/hw
+    export PATH /sbin:/system/bin:/vendor/bin
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64/hw
 
     export ANDROID_ROOT /system
